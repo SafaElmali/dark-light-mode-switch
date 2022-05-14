@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import SwitchOne from "./components/Switch/Switch";
+import { Box } from "./components/Layouts/Box";
+import { Center } from "./components/Layouts/Center";
 
-function App() {
+const App = () => {
+  const [theme, setTheme] = useState("dark");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box
+      height="100vh"
+      background={theme === "light" ? "#F9FAFC" : "#0A1120"}
+      transition={"background 0.2s ease-in-out;"}
+    >
+      <Center height="100%">
+        <SwitchOne theme={theme} setTheme={setTheme} />
+      </Center>
+    </Box>
   );
-}
+};
 
 export default App;
